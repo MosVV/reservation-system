@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ReservationController {
     private final ReservationService reservationService;
@@ -16,5 +18,11 @@ public class ReservationController {
     public Reservation getReservationByID(@PathVariable("id") Long id){
 
         return reservationService.getReservationByID(id);
+    }
+    @GetMapping()
+    public List<Reservation> getAllReservations(){
+        System.out.println("log called method");
+
+        return reservationService.findAllReservation();
     }
 }
